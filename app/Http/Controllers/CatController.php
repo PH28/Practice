@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cat;
+use App\Breed;
 use Illuminate\Http\Request;
 
 class CatController extends Controller
@@ -14,7 +15,26 @@ class CatController extends Controller
      */
     public function index()
     {
-        //
+        // \DB::enableQueryLog();
+        // // Cat::destroy(1);
+        // // $cat= Cat::onlyTrashed()->where('id', 1)->first();
+        // $cat= Cat::where('id', 1)->first();
+        // // dd($cat);
+        // $cat->forceDeleteA();
+        // // dd(\DB::getQueryLog());
+        // dd($cat);
+
+        $breed= Breed::create(['name' => 'breed-event']);
+        // $cat= Cat::create(['name' => 'abc', 'breed_id' => 1]);
+        // $breed= Breed::find(7);
+        // \DB::enableQueryLog();
+        // $cat= $breed->cat;
+        // dd(\DB::getQueryLog());
+        dd($breed);
+        // $breed= Cat::find()->breed;
+        // dd($cat);
+        // $breed= $cat->breed;
+        // dd($breed);
     }
 
     /**
@@ -78,8 +98,9 @@ class CatController extends Controller
      * @param  \App\Cat  $cat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cat $cat)
+    public function destroy($id)
     {
-        //
+        $cat = Cat::find($id);
+        $cat->delete();
     }
 }

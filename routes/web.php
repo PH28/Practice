@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 // list breed
 Route::get('breeds',  'BreedController@index');
+Route::get('cats',  'CatController@index');
+Route::get('cats/{id}',  'CatController@destroy');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

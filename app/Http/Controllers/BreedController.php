@@ -14,7 +14,16 @@ class BreedController extends Controller
      */
     public function index()
     {
-        $breeds= Breed::all();
+        $breed= Breed::create(['name' => 'breed-event']);
+        dd($breed);
+        // $breeds= Breed::all();
+        // \DB::enableQueryLog();
+        // $breed= Breed::where('id', 1)->get();
+        // // dd(\DB::getQueryLog());
+        // $data= [
+        //     'name' => 'breed13'
+        // ];
+        // Breed::create($data);
         return view('breeds.index', compact('breeds'));
     }
 

@@ -12,6 +12,11 @@ class Breed extends Model
      * @var array
      */
     protected $fillable = [
-         'name',
+         'name'
     ];
+
+    public function cats()
+    {
+    	return $this->hasMany('App\Cat');
+    }
 }
