@@ -76,7 +76,7 @@ class CatController extends Controller
      */
     public function update(Request $request, Cat $cat)
     {
-        $data= $request->all();
+        // $data= $request->all();
         $cat->update($data);
         return redirect()->route('cats.show', $cat->id);
     }
