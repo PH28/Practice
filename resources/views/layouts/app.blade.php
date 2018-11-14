@@ -18,6 +18,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style type="text/css">
+        /*th { padding: 20px; }*/
+
+    </style>
 </head>
 <body>
     <div id="app">

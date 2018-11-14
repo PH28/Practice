@@ -17,6 +17,7 @@ class CreateCatsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('breed_id');
+            $table->date('dob')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

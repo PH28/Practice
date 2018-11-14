@@ -14,7 +14,7 @@ class Cat extends Model
      * @var array
      */
     protected $fillable = [
-        'name','breed_id',
+        'name','breed_id', 'dob'
     ];
 
     public function breed()

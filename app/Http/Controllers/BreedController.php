@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Breed;
 use Illuminate\Http\Request;
+use App\Cat;
 
 class BreedController extends Controller
 {
@@ -14,17 +15,19 @@ class BreedController extends Controller
      */
     public function index()
     {
-        $breed= Breed::create(['name' => 'breed-event']);
-        dd($breed);
-        // $breeds= Breed::all();
-        // \DB::enableQueryLog();
-        // $breed= Breed::where('id', 1)->get();
-        // // dd(\DB::getQueryLog());
-        // $data= [
-        //     'name' => 'breed13'
-        // ];
-        // Breed::create($data);
+        $breeds= Breed::all();
         return view('breeds.index', compact('breeds'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listCatByBreedId($breedId)
+    {
+        $cats= Cat::where('breed_id', $breedId)->get();
+        return view('breeds.list_cats', compact('cats', 'breedId'));
     }
 
     /**
@@ -34,7 +37,7 @@ class BreedController extends Controller
      */
     public function create()
     {
-        //
+        return view('breeds.create');
     }
 
     /**
@@ -45,7 +48,11 @@ class BreedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->all();
+        // dd($data);
+        $breed= Breed::create($data);
+        return redirect()->route('breeds.index');
     }
 
     /**
@@ -56,7 +63,9 @@ class BreedController extends Controller
      */
     public function show(Breed $breed)
     {
-        //
+        // dd($breed);
+        // Breed::find($id);
+        return view('breeds.show', compact('breed'));
     }
 
     /**
@@ -67,7 +76,7 @@ class BreedController extends Controller
      */
     public function edit(Breed $breed)
     {
-        //
+        return view('breeds.edit', compact('breed'));
     }
 
     /**
@@ -79,7 +88,10 @@ class BreedController extends Controller
      */
     public function update(Request $request, Breed $breed)
     {
-        //
+        $data= $request->all();
+        // dd($data);
+        $breed->update($data);
+        return redirect()->route('breeds.show', $breed->id);
     }
 
     /**
