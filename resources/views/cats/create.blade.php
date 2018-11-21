@@ -6,7 +6,10 @@
 		<form action="{{route('cats.store')}}" method="POST">
 		@csrf
 			<label style="padding: 20px">Name</label>
-			<input type="text" name="name" value="">
+			<input type="text" name="name" value="{{old('name')}}">
+			@if( $errors->has('name'))
+			<span>{{$errors->first('name')}}</span>
+			@endif
 			<label style="padding: 20px">Breed ID</label>
 			<select name="breed_id"> 
 			@foreach ($breedIds as $key => $value)
@@ -14,7 +17,10 @@
 			@endforeach
 			</select>
 			<label style="padding: 20px">DoB</label>
-			<input type="text" name="dob">
+			<input type="text" name="dob" value="{{old('dob')}}">
+			@if( $errors->has('dob'))
+			<span>{{$errors->first('dob')}}</span>
+			@endif
 			<button type="submit">Create</button>
 		</form>
 

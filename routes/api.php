@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('cats', 'API\CatController@index');
+//Api list cats by breed id
+Route::get('breeds/{id}/cats', 'API\BreedController@listCatsByBreedId');
+Route::post('cats', 'API\CatController@store')->name('api.cats.store');

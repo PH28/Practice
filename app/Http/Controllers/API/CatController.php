@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Cat;
-use App\Breed;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateCatRequest;
+use App\Http\Controllers\Controller;
+use App\Cat;
 
 class CatController extends Controller
 {
@@ -17,7 +16,10 @@ class CatController extends Controller
     public function index()
     {
         $cats= Cat::all();
-        return view('cats.index', compact('cats'));
+        $array['message'] = 'list all cats';
+        $array['status_code'] = 200;
+        $array['data'] = $cats;
+        return response()->json($array);
     }
 
     /**
@@ -27,9 +29,7 @@ class CatController extends Controller
      */
     public function create()
     {
-        $breedIds= Breed::pluck('name','id');
-        // dd($breedIds);
-        return view('cats.create', compact('breedIds'));
+        //
     }
 
     /**
@@ -38,59 +38,58 @@ class CatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCatRequest $request)
+    public function store(Request $request)
     {
         $data= $request->all();
         $cat= Cat::create($data);
-        return redirect()->route('cats.index');
+        return response()->json([
+        	'message' => 'create success',
+        	'data' => $cat
+        	]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cat  $cat
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Cat $cat)
+    public function show($id)
     {
-        return view('cats.show', compact('cat'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cat  $cat
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cat $cat)
+    public function edit($id)
     {
-        $breedIds= Breed::pluck('name', 'id');
-        return view('cats.edit', compact('cat', 'breedIds'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cat  $cat
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cat $cat)
+    public function update(Request $request, $id)
     {
-        $data= $request->all();
-        $cat->update($data);
-        return redirect()->route('cats.show', $cat->id);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Cat  $cat
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cat $cat)
+    public function destroy($id)
     {
-        $cat->delete();
-        return redirect()->route('cats.index');
+        //
     }
 }
