@@ -7,6 +7,7 @@ use App\Cat;
 use App\Breed;
 use Illuminate\Auth\Events\Registered;
 use App\Observers\BreedObserver;
+use App\Observers\CatObserver;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -32,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
         Breed::observe(new BreedObserver);
+        Cat::observe(new CatObserver);
 
         // Breed::create(function($breed) {
         //     $breed->users()->create(['name' => 'cat-event-2']);

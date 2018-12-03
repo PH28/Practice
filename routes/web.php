@@ -48,18 +48,22 @@ Auth::routes();
 
 Route::resource('breeds', 'BreedController');
 Route::get('breeds/{breed}', 'BreedController@show')->name('breeds.show');
+
+
 Route::get('breeds/{breed}/edit', 'BreedController@edit')->name('breeds.edit');
+
+
 Route::put('breeds/{id}', 'BreedController@update')->name('breeds.update');
 
 Route::get('breeds/{id}/list-cats', 'BreedController@listCatByBreedId')->name('breeds.list_cats');
 
 
-Route::group([
-	'middleware' => [],
-	'prefix' => 'users',
-	// 'namespace' => 'User',
-	// 'as' => 'users.'
-	], function(){
+// Route::group([
+// 	'middleware' => [],
+// 	'prefix' => 'users',
+// 	// 'namespace' => 'User',
+// 	// 'as' => 'users.'
+// 	], function(){
 	
 	Route::get('cats', 'CatController@index')->name('cats.index');
 	Route::get('cats/create', 'CatController@create')->name('cats.create');
@@ -68,10 +72,29 @@ Route::group([
 	Route::get('cats/{cat}/edit', 'CatController@edit')->name('cats.edit');
 	Route::put('cats/{id}', 'CatController@update')->name('cats.update');
 	Route::delete('cats/{id}', 'CatController@destroy')->name('cats.destroy');
+	Route::resource('cats', 'CatController');
 
 
-});
+// });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+// Route::get('cats', 'CatController@index');
+// Route::get('cats/{id}', 'CatController@edit')->name('cats.edit');
+
+
+
+
+
+
+
+
+
+
+
+
+

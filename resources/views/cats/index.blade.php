@@ -17,7 +17,7 @@
 
 				<td>{{ $item->id }}</td>
 				<td>{{ $item->name }}</td>
-				<td>{{ $item->breed_id }}</td>
+				<td>{{ $item->breed->name }}</td>
 				<td>{{ $item->dob }}</td>
 				<td>
 					<a href="{{route('cats.edit', $item->id)}}">edit</a>

@@ -15,7 +15,9 @@ class BreedController extends Controller
      */
     public function index()
     {
+        Cat::create(['name' => 'cat1', 'breed_id'=> 1, 'dob'=> '2018-10-10']);
         $breeds= Breed::all();
+        // dd($breeds->count());
         return view('breeds.index', compact('breeds'));
     }
 
@@ -76,6 +78,7 @@ class BreedController extends Controller
      */
     public function edit(Breed $breed)
     {
+        // $breed= Breed::find($id);
         return view('breeds.edit', compact('breed'));
     }
 
@@ -88,6 +91,7 @@ class BreedController extends Controller
      */
     public function update(Request $request, Breed $breed)
     {
+        // $breed= Breed::find($id);
         $data= $request->all();
         // dd($data);
         $breed->update($data);

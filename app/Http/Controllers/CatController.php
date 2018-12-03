@@ -16,7 +16,9 @@ class CatController extends Controller
      */
     public function index()
     {
-        $cats= Cat::all();
+        // $users= User::with('cats')->get();
+        $cats= Cat::with(['breed'])->get();
+        // dd($cats);
         return view('cats.index', compact('cats'));
     }
 
@@ -40,7 +42,10 @@ class CatController extends Controller
      */
     public function store(CreateCatRequest $request)
     {
-        $data= $request->all();
+
+        $data= $request->except(['name']);
+        // $data= $request->all();
+        // dd($data);
         $cat= Cat::create($data);
         return redirect()->route('cats.index');
     }

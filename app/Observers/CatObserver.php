@@ -4,9 +4,9 @@ namespace App\Observers;
 
 class CatObserver
 {
-    public function creating()
+    public function creating($cat)
     {
-    	//to do
+    	$cat->name= 'cataa';
     }
 
     public function created()

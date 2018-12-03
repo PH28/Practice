@@ -84,43 +84,43 @@ $("#abc").click(function (){
 
 // event for click on name breed
 
-$('a').click(function(e) {
+// $('a').click(function(e) {
 
-	//remove html cũ
-	$('#list-cat').html("");
-	//get data-id
-	var  breed_id= $(this).attr('data-id');
-	e.preventDefault();
-	$.ajax({
-		url : 'api/breeds/'+breed_id+'/cats',
-		method: 'GET',
-		data : {},
-		success : function(response) {
-			html= '<h1>List all Cat by Breed Id</h1><a href="">Create cat</a>'+
-				'<table>'+
-					'<tr>'+
-						'<th> ID</th>'+
-						'<th> Name</th>'+
-						'<th> Breed Id</th>'+
-						'<th> DoB</th>'+
-					'</tr>';
-			$.each(response,function(index, value){
-				// for (var i=0, i < response.length, i++) 
-				html+='<tr>'+
-						'<td>'+value.id+'</td>'+
-						'<td>'+value.name+'</td>'+
-						'<td>'+value.breed_id+'</td>'+
-						'<td>'+value.dob+'</td>'+
-					'</tr>';
-			});
-			html+='</table>';
-			$('#list-cat').append(html);
+// 	//remove html cũ
+// 	$('#list-cat').html("");
+// 	//get data-id
+// 	var  breed_id= $(this).attr('data-id');
+// 	e.preventDefault();
+// 	$.ajax({
+// 		url : 'api/breeds/'+breed_id+'/cats',
+// 		method: 'GET',
+// 		data : {},
+// 		success : function(response) {
+// 			html= '<h1>List all Cat by Breed Id</h1><a href="">Create cat</a>'+
+// 				'<table>'+
+// 					'<tr>'+
+// 						'<th> ID</th>'+
+// 						'<th> Name</th>'+
+// 						'<th> Breed Id</th>'+
+// 						'<th> DoB</th>'+
+// 					'</tr>';
+// 			$.each(response,function(index, value){
+// 				// for (var i=0, i < response.length, i++) 
+// 				html+='<tr>'+
+// 						'<td>'+value.id+'</td>'+
+// 						'<td>'+value.name+'</td>'+
+// 						'<td>'+value.breed_id+'</td>'+
+// 						'<td>'+value.dob+'</td>'+
+// 					'</tr>';
+// 			});
+// 			html+='</table>';
+// 			$('#list-cat').append(html);
 
-		}
+// 		}
 
-	});
+// 	});
 
-});
+// });
 
 //event submit form 
 
